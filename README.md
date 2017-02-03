@@ -1,6 +1,6 @@
-# TicTacToe App 
+# Minesweeper App 
 
-A Minesweeper App  
+A Minesweeper App  with recursive logic 
 
 ### Prerequisites
 
