@@ -1,5 +1,6 @@
 package com.example.sudhir.minesweeper;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 button[i][j].setLayoutParams(params);
                 button[i][j].setText("");
                 button[i][j].setMine(false);
+                button[i][j].setBackgroundColor(Color.LTGRAY);
                 button[i][j].i = i;
                 button[i][j].j = j;
                 rows[i].addView(button[i][j]);
@@ -199,45 +201,92 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void expand(int i, int j) {
         if (isValid(i - 1, j - 1)) {
-            button[i - 1][j - 1].setText("" + button[i - 1][j - 1].getCount());
-            if (button[i - 1][j - 1].getCount() == 0 && button[i - 1][j - 1].getText().toString().equals(""))
+
+            if (button[i - 1][j - 1].getCount() == 0 && button[i - 1][j - 1].getText().toString().equals("")) {
+                button[i - 1][j - 1].setText("" + button[i - 1][j - 1].getCount());
                 expand(i - 1, j - 1);
+            }
+             else if (button[i - 1][j - 1].getCount() > 0 && button[i - 1][j - 1].getText().toString().equals("")) {
+                button[i - 1][j - 1].setText("" + button[i - 1][j - 1].getCount());
+                //expand(i - 1, j - 1);
+            }
         }
         if (isValid(i - 1, j)) {
-            button[i - 1][j].setText("" + button[i - 1][j].getCount());
-            if (button[i - 1][j].getCount() == 0 && button[i - 1][j].getText().toString().equals(""))
+
+            if (button[i - 1][j].getCount() == 0 && button[i - 1][j].getText().toString().equals("")){
+                button[i - 1][j].setText("" + button[i - 1][j].getCount());
                 expand(i - 1, j);
+            }
+            else if (button[i - 1][j].getCount() > 0 && button[i - 1][j].getText().toString().equals("")){
+                button[i - 1][j].setText("" + button[i - 1][j].getCount());
+                //expand(i - 1, j);
+            }
         }
         if (isValid(i - 1, j + 1)) {
-            button[i - 1][j + 1].setText("" + button[i - 1][j + 1].getCount() + "");
-            if (button[i - 1][j + 1].getCount() == 0 && button[i - 1][j + 1].getText().toString().equals(""))
+
+            if (button[i - 1][j + 1].getCount() == 0 && button[i - 1][j + 1].getText().toString().equals("")){
+                button[i - 1][j + 1].setText("" + button[i - 1][j + 1].getCount() + "");
                 expand(i - 1, j + 1);
+           }
+           else if (button[i - 1][j + 1].getCount() > 0 && button[i - 1][j + 1].getText().toString().equals("")){
+                button[i - 1][j + 1].setText("" + button[i - 1][j + 1].getCount() + "");
+                //expand(i - 1, j + 1);
+            }
         }
         if (isValid(i, j - 1)) {
-            button[i][j - 1].setText("" + button[i][j - 1].getCount() + "");
-            if (button[i][j - 1].getCount() == 0 && button[i][j - 1].getText().toString().equals(""))
+
+            if (button[i][j - 1].getCount() == 0 && button[i][j - 1].getText().toString().equals("")){
+                button[i][j - 1].setText("" + button[i][j - 1].getCount() + "");
                 expand(i, j - 1);
+            }
+            else  if (button[i][j - 1].getCount() > 0 && button[i][j - 1].getText().toString().equals("")){
+                button[i][j - 1].setText("" + button[i][j - 1].getCount() + "");
+                //expand(i, j - 1);
+            }
         }
         if (isValid(i, j + 1)) {
-            button[i][j + 1].setText("" + button[i][j + 1].getCount() + "");
-            if (button[i][j + 1].getCount() == 0 && button[i][j + 1].getText().toString().equals(""))
+
+            if (button[i][j + 1].getCount() == 0 && button[i][j + 1].getText().toString().equals("")){
+                button[i][j + 1].setText("" + button[i][j + 1].getCount() + "");
                 expand(i, j + 1);
+           }
+            else  if (button[i][j + 1].getCount() > 0 && button[i][j + 1].getText().toString().equals("")){
+                button[i][j + 1].setText("" + button[i][j + 1].getCount() + "");
+               // expand(i, j + 1);
+            }
         }
         if (isValid(i + 1, j - 1)) {
-            button[i + 1][j - 1].setText("" + button[i + 1][j - 1].getCount() + "");
-            if (button[i + 1][j - 1].getCount() == 0 && button[i + 1][j - 1].getText().toString().equals(""))
-                expand(i + 1, j - 1);
 
+            if (button[i + 1][j - 1].getCount() == 0 && button[i + 1][j - 1].getText().toString().equals("")){
+                button[i + 1][j - 1].setText("" + button[i + 1][j - 1].getCount() + "");
+                expand(i + 1, j - 1);
+           }
+            else  if (button[i + 1][j - 1].getCount() > 0 && button[i + 1][j - 1].getText().toString().equals("")){
+                button[i + 1][j - 1].setText("" + button[i + 1][j - 1].getCount() + "");
+               // expand(i + 1, j - 1);
+            }
         }
         if (isValid(i + 1, j)) {
-            button[i + 1][j].setText("" + button[i + 1][j].getCount() + "");
-            if (button[i + 1][j].getCount() == 0 && button[i + 1][j].getText().toString().equals(""))
-                expand(i + 1, j);
+
+            if (button[i + 1][j].getCount() == 0 && button[i + 1][j].getText().toString().equals("")){
+                button[i + 1][j].setText("" + button[i + 1][j].getCount() + "");
+            expand(i + 1, j);
+        }
+            else  if (button[i + 1][j].getCount() > 0 && button[i + 1][j].getText().toString().equals("")){
+                button[i + 1][j].setText("" + button[i + 1][j].getCount() + "");
+               // expand(i + 1, j);
+            }
         }
         if (isValid(i + 1, j + 1)) {
-            button[i + 1][j + 1].setText("" + button[i + 1][j + 1].getCount() + "");
-            if (button[i + 1][j + 1].getCount() == 0 && button[i + 1][j + 1].getText().toString().equals(""))
+
+            if (button[i + 1][j + 1].getCount() == 0 && button[i + 1][j + 1].getText().toString().equals("")) {
+                button[i + 1][j + 1].setText("" + button[i + 1][j + 1].getCount() + "");
                 expand(i + 1, j + 1);
+            }
+            else if (button[i + 1][j + 1].getCount() > 0 && button[i + 1][j + 1].getText().toString().equals("")) {
+                button[i + 1][j + 1].setText("" + button[i + 1][j + 1].getCount() + "");
+               // expand(i + 1, j + 1);
+            }
         }
     }
 
